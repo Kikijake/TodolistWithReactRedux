@@ -4,7 +4,7 @@
  * @returns {delayedFunction}
  */
 
-export const simulateDelay = (importFunction, delay = 2000) => {
+export const simulateDelay = (importFunction, delay = 1000) => {
   return new Promise((resolve) => {
     setTimeout(() => resolve(importFunction()), delay);
   });

@@ -1,6 +1,6 @@
 import React from "react";
 import { simulateDelay } from "../utils";
 
-const HomeScreen = React.lazy(() => simulateDelay(() => import("../pages/Home/HomeScreen"), 2000))
+const HomeScreen = React.lazy(() => simulateDelay(() => import("../pages/Home/HomeScreen")))
 
 export { HomeScreen }
