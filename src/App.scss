@@ -60,3 +60,135 @@
     transform: translate(0px,-180px);
   }
 }
+
+// src/pages/ToDoList/ToDoList
+.todo-list {
+  margin:8% auto 0px auto;
+  padding: 0px 7px 7px 7px;
+  background-color: #F4E8C1;
+  color: #0d5c63;
+  width: 400px;
+  height: 60vh;
+  border:#19647E 3px solid;
+  border-radius: 10px;
+  position: relative;
+  box-sizing: border-box;
+  overflow: auto;
+  z-index: inherit;
+
+  .todo-header{
+    position: fixed;
+    width: 380px;
+    z-index: 3;
+
+    h5{
+      font-family: "Atop";
+      background-color: #F4E8C1;
+      height: 40px;
+      padding: 7px 0px 0px 0px;
+      position: relative;
+      z-index: 3;
+    }
+  
+    .plus-button{
+      color: #0D5C63;
+      border: #0D5C63 2px solid;
+      margin-top: 7px;
+      position: absolute;
+      right: 7px;
+      z-index: 4;
+    }
+
+    .ToDoInputBox{
+      transition: 500ms;
+      position: relative;
+      transform: translate(0px,-40px);
+      top:0;
+      z-index: 2;
+
+      .task-input{
+        input{
+          border: none;
+          border-radius: 10px 0px 0px 10px;
+          padding-left: 10px;
+          outline: none;
+        }
+    
+        input[type=text]:focus{
+          border: #0D5C63 2px solid;
+        }
+    
+        button{
+          border: none;
+          border-radius: 0px 10px 10px 0px;
+          color: #0D5C63;
+        }
+    
+        button:active{
+          background-color: #0D5C63;
+          color: white;
+        }
+      }
+    }
+
+    .drop{
+      transform: translate(0px,-4px);
+    }
+  }
+  
+  .task-table{
+    padding-top: 70px;
+    z-index: 1;
+
+    .ToDoRow{
+      width: 380px;
+      display: flex;
+      justify-content: center;
+      
+      .task{
+        width: 320px;
+        text-align: left;
+        background-color: #ffffff;
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-between;
+
+        .complete{
+          text-decoration: line-through;
+        }
+
+        .todo{
+          width: 270px;
+          // background-color: red;
+          cursor:text;
+          margin: 0;
+          padding: 0;
+        }
+
+        input{
+          border: none;
+          border: #0D5C63 2px solid;
+          border-radius: 10px 0 0 10px;
+          outline: none;
+        }
+      }
+    }
+  }
+}
+
+::-webkit-scrollbar{
+  width: 8px;
+}
+
+::-webkit-scrollbar-track{
+  margin:40px 0px 10px 0px;
+  background-color: #F4E8C1;
+  border-radius: 30px;
+}
+
+::-webkit-scrollbar-thumb{
+  background-color: #0D5C63;
+  border: #F4E8C1 2px solid;
+  border-radius: 30px;
+
+}
