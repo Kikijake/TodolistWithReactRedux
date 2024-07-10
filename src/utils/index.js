@@ -1,5 +1,5 @@
 /**
- * Make delay for rendering imported funciton.
+ * Delay rendering imported component.
  *
  * @returns {delayedFunction}
  */

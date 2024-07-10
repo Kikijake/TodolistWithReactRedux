@@ -1,32 +1,63 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { deleteTodo, updateToDo } from "../../redux";
+// API imports
+import useAxios from "../../hooks/useAxios";
+import API from "../../network/API";
+// Redux imports
 import { useDispatch } from "react-redux";
+import { fetchTodo } from "../../redux";
 
 const ToDoRow = (props) => {
-  const { todo, index } = props;
+  const { todo } = props;
+  const { instance } = useAxios();
   const [task, setTask] = useState(todo.task);
   const dispatch = useDispatch();
-  
-  const handleSubmit = (e) => {
+  const url = `${API.todos}/${todo.id}`;
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const updateTodo = { ...todo, task: task, isEdit: !todo.isEdit };
-    dispatch(updateToDo(updateTodo));
-  };
-  
-  const handleEdit = () => {
-    const updateTodo = { ...todo, isEdit: !todo.isEdit };
-    dispatch(updateToDo(updateTodo));
-  };
-
-  const handleComplete = () => {
-    const updateTodo = { ...todo, isComplete: !todo.isComplete };
-    dispatch(updateToDo(updateTodo));
+    const response = await instance
+      .patch(url, { task:task, isEdit: !todo.isEdit })
+      .catch((error) => {
+        console.log("error:", error);
+      });
+    if (response) {
+      dispatch(fetchTodo);
+    }
   };
 
-  const handleDelete = (todoId) => {
-    dispatch(deleteTodo(todoId))
-  }
+  const handleEdit = async () => {
+    const response = await instance
+      .patch(url, {isEdit: !todo.isEdit})
+      .catch((error) => {
+        console.log("error:", error);
+      });
+    if (response) {
+      dispatch(fetchTodo);
+    }
+  };
+
+  const handleComplete = async () => {
+    const response = await instance
+      .patch(url, {isComplete: !todo.isComplete})
+      .catch((error) => {
+        console.log("error:", error);
+      });
+    if (response) {
+      dispatch(fetchTodo);
+    }
+  };
+
+  const handleDelete = async () => {
+    const response = await instance
+      .delete(url)
+      .catch((error) => {
+        console.log("error:", error);
+      });
+    if (response) {
+      dispatch(fetchTodo);
+    }
+  };
 
   return (
     <form className="ToDoRow mt-2" onSubmit={handleSubmit}>
@@ -65,7 +96,6 @@ const ToDoRow = (props) => {
 
 ToDoRow.propTypes = {
   todo: PropTypes.object.isRequired,
-  index: PropTypes.number.isRequired,
 };
 
 export default ToDoRow;

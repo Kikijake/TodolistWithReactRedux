@@ -1,26 +1,22 @@
-import { ADD_TODO, DELETE_TODO, UPDATE_TODO } from "./todoTypes";
+import { SET_TODO } from "./todoTypes";
+import axios from "axios";
+import { API_HOST } from "../../network/domain";
+import API from "../../network/API";
 
-/** 
-* Accept object for reducer state
-* @accept object 
-*/
+const url = `${API_HOST}${API.todos}`;
 
-export const addTodo = (todo) => {
-  return {
-    type: ADD_TODO,
-    payload: todo
-  }
-}
-
-export const updateToDo = (todo) => {
-  return {
-    type: UPDATE_TODO,
-    payload: todo
-  }
-}
-export const deleteTodo = (todoId) => {
-  return {
-    type: DELETE_TODO,
-    payload: todoId
-  }
-}
+export const fetchTodo = async (dispatch) => {
+  return axios
+    .get(url)
+    .then((response) => {
+      const { data } = response;
+      dispatch({
+        type: SET_TODO,
+        payload: data,
+      });
+      return Promise.resolve(response);
+    })
+    .catch((error) => {
+      return Promise.reject(error);
+    });
+};

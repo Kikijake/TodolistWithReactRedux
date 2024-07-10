@@ -1,8 +1,8 @@
 import React from "react";
-import Lottie from 'lottie-react'
+import Lottie from "lottie-react";
 import { Link } from "react-router-dom";
-import welcomeIcon from '../../assets/animations/welcome_robot.json'
-import startButton from '../../assets/animations/start_button.json'
+import welcomeIcon from "../../assets/animations/welcome_robot.json";
+import startButton from "../../assets/animations/start_button.json";
 
 const HomeScreen = () => {
   return (
@@ -16,6 +16,6 @@ const HomeScreen = () => {
       </div>
     </div>
   );
-}
+};
 
-export default HomeScreen
+export default HomeScreen;

@@ -1,0 +1,28 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "task": "click check button to save as done",
+      "isComplete": false,
+      "isEdit": false
+    },
+    {
+      "id": 2,
+      "task": "press enter to save",
+      "isComplete": false,
+      "isEdit": true
+    },
+    {
+      "id": 3,
+      "task": "click here to edit",
+      "isComplete": false,
+      "isEdit": false
+    },
+    {
+      "id": "6853e753-ce8e-4d99-bc9f-bfd780405916",
+      "task": "hello",
+      "isComplete": false,
+      "isEdit": false
+    }
+  ]
+}

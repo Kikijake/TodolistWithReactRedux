@@ -1,9 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useState } from "react";
 import ToDoInputBox from "./ToDoInputBox";
 
-const ToDoHeader = (props) => {
-  const { showMinus, handleShow, addTask } = props;
+const ToDoHeader = () => {
+  const [showMinus, setShowMinus] = useState(false);
+
+  const handleShow = () => {
+    setShowMinus((showMinus) => {
+      return showMinus ? false : true;
+    });
+  };
 
   return (
     <div className="todo-header">
@@ -16,16 +21,10 @@ const ToDoHeader = (props) => {
       </button>
       <h5>ToDo List</h5>
       <div className={`ToDoInputBox ${showMinus ? "drop" : ""}`}>
-        <ToDoInputBox addTask={addTask} />
+        <ToDoInputBox setShowMinus={setShowMinus} />
       </div>
     </div>
   );
-};
-
-ToDoHeader.propTypes = {
-  showMinus: PropTypes.bool.isRequired,
-  handleShow: PropTypes.func.isRequired,
-  addTask: PropTypes.func.isRequired,
 };
 
 export default ToDoHeader;

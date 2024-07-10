@@ -1,48 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchTodo } from "../../redux";
 import ToDoHeader from "../../components/ToDoList/ToDoHeader";
 import ToDoRow from "../../components/ToDoList/ToDoRow";
-import { useSelector, useDispatch } from "react-redux";
-import { v4 as uuidv4 } from "uuid";
-import { addTodo } from "../../redux";
-uuidv4();
 
 const ToDoList = () => {
+  const dispatch = useDispatch();
+  
   const todos = useSelector((state) => state.todos);
   const latestTodos = [...todos].reverse();
-  const dispatch = useDispatch();
-  const [showMinus, setShowMinus] = useState(false);
 
-  const addTask = (task) => {
-    const todo = { id: uuidv4(), task: task, isComplete: false, isEdit: false };
-    dispatch(addTodo(todo));
-    setShowMinus(false);
-  };
-
-  const handleShow = () => {
-    setShowMinus((showMinus) => {
-      return showMinus ? false : true;
-    });
-  };
-
-  console.log(todos);
+  useEffect(() => {
+    dispatch(fetchTodo);
+  }, []);
 
   return (
     <div className="todo-list">
-      <ToDoHeader
-        showMinus={showMinus}
-        handleShow={handleShow}
-        addTask={addTask}
-      />
+      <ToDoHeader />
       <div className="task-table">
         {todos?.length > 0 &&
-          latestTodos.map((todo, index) =>
-            <ToDoRow
-              key={index}
-              index={index}
-              todo={todo}
-            />
-          )
-        }
+          latestTodos.map((todo, index) => <ToDoRow key={index} todo={todo} />)}
       </div>
     </div>
   );
