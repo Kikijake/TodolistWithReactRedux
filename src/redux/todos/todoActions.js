@@ -4,7 +4,7 @@ import { API_HOST } from "../../network/domain";
 import API from "../../network/API";
 
 const url = `${API_HOST}${API.todos}`;
-
+//retrieve list of data and set state
 export const fetchTodo = async (dispatch) => {
   return axios
     .get(url)

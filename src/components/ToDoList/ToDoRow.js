@@ -14,6 +14,7 @@ const ToDoRow = (props) => {
   const dispatch = useDispatch();
   const url = `${API.todos}/${todo.id}`;
 
+  // save the updated data
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await instance
@@ -26,6 +27,7 @@ const ToDoRow = (props) => {
     }
   };
 
+  // edit todo
   const handleEdit = async () => {
     const response = await instance
       .patch(url, {isEdit: !todo.isEdit})
@@ -37,6 +39,7 @@ const ToDoRow = (props) => {
     }
   };
 
+  // consider complete
   const handleComplete = async () => {
     const response = await instance
       .patch(url, {isComplete: !todo.isComplete})
@@ -48,6 +51,7 @@ const ToDoRow = (props) => {
     }
   };
 
+  // delete data
   const handleDelete = async () => {
     const response = await instance
       .delete(url)

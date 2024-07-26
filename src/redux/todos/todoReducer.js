@@ -1,7 +1,7 @@
 import { SET_TODO } from "./todoTypes";
 
 /**
- * @return array state
+ * @return todo state 
  */
 
 const initialState = [];

@@ -16,6 +16,8 @@ const ToDoInputBox = (props) => {
   const { instance } = useAxios();
   const [task, setTask] = useState("");
 
+  // create todo list using api
+  // dispatch updated todo list
   const handleSubmit = async (e) => {
     e.preventDefault();
     const url = `${API.todos}`;

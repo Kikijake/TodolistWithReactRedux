@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
+// Import Redux
 import { useSelector, useDispatch } from "react-redux";
 import { fetchTodo } from "../../redux";
+// Import component
 import ToDoHeader from "../../components/ToDoList/ToDoHeader";
 import ToDoRow from "../../components/ToDoList/ToDoRow";
 
