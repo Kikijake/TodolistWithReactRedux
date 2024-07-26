@@ -12,9 +12,13 @@ Before you begin, ensure you have the following installed on your machine:
 
 ## Necessary commands
 
+#### Install `npm package`
+
+    npm install
+
 #### Start `json-server`
 
-    json-server --watch data/db.json
+    $ npx json-server db.json
 
 #### Run `react`
 
