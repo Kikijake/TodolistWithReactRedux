@@ -18,7 +18,7 @@ Before you begin, ensure you have the following installed on your machine:
 
 #### Start `json-server`
 
-    npx json-server data/db.json
+    npm run start:db
 
 #### Run `react`
 
